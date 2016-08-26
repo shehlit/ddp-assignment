@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Central Limit Theorem</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Central Limit Theorem">
+  <meta name="author" content="Sheh Lit Chang">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Central Limit Theorem</h1>
+    <h2>A demonstration</h2>
+    <p>Sheh Lit Chang<br/>Student</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Central Limit Theorem (CLT)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The Central Limit Theorem states that the distribution of averages of independent, identically distributed variables becomes that of a standard normal as the sample size increases.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Central_limit_theorem">More information about CLT</a></p>
+
+<p>Reference: Data Science Specialization Course 6, Statistical Inference, A trip to Asymtopia</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Demonstration of CLT</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>An exponential distribution is used to demonstrate CLT.</li>
+<li>Users are allowed to choose:
+
+<ul>
+<li>the rate parameter </li>
+<li>how many numbers to be generated in one sample</li>
+<li>how many sample size to examine the distribution of the mean of each sample</li>
+</ul></li>
+<li>The distribution of the mean of each sample is plotted in a histogram, and several curves are overlaid:
+
+<ul>
+<li>Normal distribution curve using theoretical mean and standard deviation</li>
+<li>Normal distribution curve with sample mean and standard deviation</li>
+<li>Density plot of the histogram itself</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The CLT Demonstration Shiny Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Suppose we have the following parameters:</p>
+
+<ul>
+<li>Rate parameter = 0.2 </li>
+<li>Size of 1 sample = 40</li>
+<li>Number of samples = 10, 100, 1000</li>
+<li>Theoretical mean = 5, Theoretical standard deviation = 0.79</li>
+</ul>
+
+<p>We have the following histograms and fitted curves:</p>
+
+<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>The CLT Demonstration Shiny Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>From the curves, we can see that</p>
+
+<ul>
+<li>the sample normal distribution curve is closer to the theoretical normal distribution curve as the sample size increases.</li>
+<li>the fitted density curves resembles a normal curve when the sample size increases. </li>
+</ul>
+
+<p>Feel free to use change the parameters to see for yourselves!</p>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Central Limit Theorem (CLT)'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Demonstration of CLT'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The CLT Demonstration Shiny Application'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='The CLT Demonstration Shiny Application'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

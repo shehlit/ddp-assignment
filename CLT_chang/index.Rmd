@@ -1,0 +1,132 @@
+---
+title       : Central Limit Theorem
+subtitle    : A demonstration
+author      : Sheh Lit Chang
+job         : Student
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax]     # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+
+---
+
+## Central Limit Theorem (CLT)
+
+The Central Limit Theorem states that the distribution of averages of independent, identically distributed variables becomes that of a standard normal as the sample size increases.
+
+[More information about CLT](https://en.wikipedia.org/wiki/Central_limit_theorem)
+
+Reference: Data Science Specialization Course 6, Statistical Inference, A trip to Asymtopia
+
+---
+
+## Demonstration of CLT
+
+* An exponential distribution is used to demonstrate CLT.
+* Users are allowed to choose:
+  + the rate parameter 
+  + how many numbers to be generated in one sample
+  + how many sample size to examine the distribution of the mean of each sample
+* The distribution of the mean of each sample is plotted in a histogram, and several curves are overlaid:
+  + Normal distribution curve using theoretical mean and standard deviation
+  + Normal distribution curve with sample mean and standard deviation
+  + Density plot of the histogram itself
+
+---
+
+## The CLT Demonstration Shiny Application
+
+Suppose we have the following parameters:
+  * Rate parameter = 0.2 
+  * Size of 1 sample = 40
+  * Number of samples = 10, 100, 1000
+  * Theoretical mean = 5, Theoretical standard deviation = 0.79
+
+We have the following histograms and fitted curves:
+
+```{r, echo=FALSE, warning=FALSE, fig.width=12, fig.height=3.5}
+library(gridExtra)
+
+set.seed(1)
+set10 <- NULL
+set10 <- sapply(1:10, function(x) mean(rexp(40,0.2)))
+
+set.seed(2)
+set100 <- NULL
+set100 <- sapply(1:100, function(x) mean(rexp(40,0.2)))
+
+set.seed(3)
+set1000 <- NULL
+set1000 <- sapply(1:1000, function(x) mean(rexp(40,0.2)))
+
+par(mfrow = c(1,3))
+hist(set10, main = "Distribution of 10 Averages", xlab = "Averages", freq = FALSE, xlim = c(3,7))
+curve(dnorm(x, mean=5, sd=sqrt(0.625)), add = TRUE, col="green", lwd = 4)
+curve(dnorm(x, mean=mean(set10), sd=sd(set10)), add = TRUE, col="black", lwd = 2)
+lines(density(set10), col="red", lwd = 2)
+legend(5.5, 0.7, c("Theoretical", "Sample", "Density plot"), lty = c(1,1,1), lwd = c(2,2,2), col=c("green", "black", "red"))
+
+
+hist(set100, main = "Distribution of 100 Averages", xlab = "Averages", freq = FALSE)
+curve(dnorm(x, mean=5, sd=sqrt(0.625)), add = TRUE, col="green", lwd = 4)
+curve(dnorm(x, mean=mean(set100), sd=sd(set100)), add = TRUE, col="black", lwd = 2)
+lines(density(set100), col="red", lwd = 2)
+legend(6.2, 0.45, c("Theoretical", "Sample", "Density plot"), lty = c(1,1,1), lwd = c(2,2,2), col=c("green", "black", "red"))
+
+hist(set1000, main = "Distribution of 1000 Averages", xlab = "Averages", freq = FALSE, ylim = c(0,0.5))
+curve(dnorm(x, mean=5, sd=sqrt(0.625)), add = TRUE, col="green", lwd = 4)
+curve(dnorm(x, mean=mean(set1000), sd=sd(set1000)), add = TRUE, col="black", lwd = 2)
+lines(density(set1000), col="red", lwd = 2)
+legend(5.8, 0.45, c("Theoretical", "Sample", "Density plot"), lty = c(1,1,1), lwd = c(2,2,2), col=c("green", "black", "red"))
+
+```
+
+---
+
+## The CLT Demonstration Shiny Application
+
+From the curves, we can see that
++ the sample normal distribution curve is closer to the theoretical normal distribution curve as the sample size increases.
++ the fitted density curves resembles a normal curve when the sample size increases. 
+
+Feel free to use change the parameters to see for yourselves!
+
+```{r, echo=FALSE, warning=FALSE, fig.width=12, fig.height=3.5}
+library(gridExtra)
+
+set.seed(1)
+set10 <- NULL
+set10 <- sapply(1:10, function(x) mean(rexp(40,0.2)))
+
+set.seed(2)
+set100 <- NULL
+set100 <- sapply(1:100, function(x) mean(rexp(40,0.2)))
+
+set.seed(3)
+set1000 <- NULL
+set1000 <- sapply(1:1000, function(x) mean(rexp(40,0.2)))
+
+par(mfrow = c(1,3))
+hist(set10, main = "Distribution of 10 Averages", xlab = "Averages", freq = FALSE, xlim = c(3,7))
+curve(dnorm(x, mean=5, sd=sqrt(0.625)), add = TRUE, col="green", lwd = 4)
+curve(dnorm(x, mean=mean(set10), sd=sd(set10)), add = TRUE, col="black", lwd = 2)
+lines(density(set10), col="red", lwd = 2)
+legend(5.5, 0.7, c("Theoretical", "Sample", "Density plot"), lty = c(1,1,1), lwd = c(2,2,2), col=c("green", "black", "red"))
+
+
+hist(set100, main = "Distribution of 100 Averages", xlab = "Averages", freq = FALSE)
+curve(dnorm(x, mean=5, sd=sqrt(0.625)), add = TRUE, col="green", lwd = 4)
+curve(dnorm(x, mean=mean(set100), sd=sd(set100)), add = TRUE, col="black", lwd = 2)
+lines(density(set100), col="red", lwd = 2)
+legend(6.2, 0.45, c("Theoretical", "Sample", "Density plot"), lty = c(1,1,1), lwd = c(2,2,2), col=c("green", "black", "red"))
+
+hist(set1000, main = "Distribution of 1000 Averages", xlab = "Averages", freq = FALSE, ylim = c(0,0.5))
+curve(dnorm(x, mean=5, sd=sqrt(0.625)), add = TRUE, col="green", lwd = 4)
+curve(dnorm(x, mean=mean(set1000), sd=sd(set1000)), add = TRUE, col="black", lwd = 2)
+lines(density(set1000), col="red", lwd = 2)
+legend(5.8, 0.45, c("Theoretical", "Sample", "Density plot"), lty = c(1,1,1), lwd = c(2,2,2), col=c("green", "black", "red"))
+
+```
+
