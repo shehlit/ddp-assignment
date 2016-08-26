@@ -20,7 +20,9 @@ shinyUI(fluidPage(
        
        sliderInput('ymax', 'Maximum y', min = 0.5, max = 2.5, value = 0.8),
        helpText("Adjust the maximum y value in y-axis"),
-       actionButton("go", "Run")
+       actionButton("go", "Run"),
+       
+       h6("View", a("code", href = "https://github.com/shehlit/ddp-assignment"), "on Github", style = "font-size: 11px", align = "right")
     ),
     
     # Show a plot of the generated distribution
@@ -36,9 +38,17 @@ shinyUI(fluidPage(
            the users have specified the rate parameter. The theoretical 
            mean and standard deviation of this sample is calculated using 
            1/(rate parameter). Users can then decide how many times 
-           this experiment is repeated (Number of samples).")
-         ),
+           this experiment is repeated (Number of samples)."),
        
+       p("Users can see how the sample mean and standard deviation compared 
+         to the theoretical mean and theoretical standard deviation. 
+         There are also 3 curves plotted on the histogram: normal curve 
+         using theoretical values (green), normal curve using sample 
+         values (black), density plot for the histogram (red). 
+         As the number of samples increases, the density curve and 
+         the sample curve will resemble the theoretical normal curve 
+         most of the time.")
+       ),
        
        fluidRow(
          column(4, textOutput("truemean")),
